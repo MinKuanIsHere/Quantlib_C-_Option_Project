@@ -1,31 +1,38 @@
 # 金融計算程式運用（二）期末報告
 
 
-學生: 金融所 碩二 陳旻寬 111352021
-
+- 學生: 金融所 碩二 陳旻寬 111352021
 
 ## 摘要
-- 參照Quantlib當中的選擇權定價模型
+- 參照`Quantlib`當中的選擇權定價模型
 `.\Myproj\external\QuantLib-1.32\Examples\EquityOption\EquityOption.cpp`
-- 觀察Quantlib如何使用Black-Scholes for European、Finite differences、Binomial Cox-Ross-Rubinstein等三種歐式選擇權定價方法。
+- 觀察`Quantlib`如何使用Black-Scholes for European、Finite differences、Binomial Cox-Ross-Rubinstein、Monte Carlo Method: MC (crude)等四種歐式選擇權定價方法。
 
+## 資料
+- 期末報告說明與主程式(github):
+    - 說明在`README.md`，但避免無法閱讀故也補充上`README.html`。
+    - github中僅放主程式`main.cpp`。
+    - https://github.com/MinKuanIsHere/Quantlib_Option_Project
+- 完整程式碼(google雲端):
+    - 此為包含`CMakeLists.txt`、`main.cpp`、`Quantlib`等程式。
+    - https://drive.google.com/drive/folders/1D77Sn-sshaxzuvfPoWClDor7IWlOHriu?usp=sharing
 ## Start C++ and Quantlib
-- 使用window 11中的Linux & Ubuntu運行C++和Quantlib
-- Install Linux on windows 11
+- 使用`window 11`中的`Linux & Ubuntu`運行`C++`和`Quantlib`
+- Install `Linux` on `windows 11`
     - https://learn.microsoft.com/zh-tw/windows/wsl/install
-    - 安裝使用單一命令執行 WSL 所需的所有項目。 以滑鼠右鍵按一下並選取 [以系統管理員身分執行]，在系統管理員模式中開啟 PowerShell 或 Windows 命令提示字元，輸入 `wsl --install` 命令，然後重新開機電腦。
+    - 安裝使用單一命令執行 WSL 所需的所有項目。 以滑鼠右鍵按一下並選取 [以系統管理員身分執行]，在系統管理員模式中開啟 `PowerShell` 或 `Windows` 命令提示字元，輸入 `wsl --install` 命令，然後重新開機電腦。
     - 重開機後打開檔案總管是否有**Linux(企鵝圖示)** ![image](https://hackmd.io/_uploads/B1OJe0LKa.png)
 
     - 重開機後可以在**windows圖示**中輸入`Ubunto`，並打開。初始運行方式請參照同個網站說明。
 - Install C++ and Quantlib on Linux
     - https://rpubs.com/zhenghuii/CppFin1
-    - follow section 補充：在 Windows 電腦安裝 WSL（Linux），並使用 VS code 開發 C++
+    - follow section 補充：在 `Windows` 電腦安裝 `WSL（Linux）`，並使用 VS code 開發 C++
     - Boost是運行Quantlib必要程式`sudo apt-get install libboost-all-dev`， (https://www.quantlib.org/install/linux.shtml)
     - 記得安裝 Visual Studio Code 必要的『延伸模組』：如與 cmake相關、WSL 相關等
 
 - 執行說明
     - `CMakeLists.txt`遵從講義CppFin1進行Build。
-    - 在資料夾`src`中執行`main.cpp`，內容為使用Quantlib計算選擇權價格，包含Black-Scholes for European、Finite differences、Binomial Cox-Ross-Rubinstein等三種歐式選擇權定價方法。
+    - 在資料夾`src`中執行`main.cpp`，內容為使用Quantlib計算選擇權價格，包含Black-Scholes for European、Finite differences、Binomial Cox-Ross-Rubinstein、Monte Carlo Method: MC (crude)等四種歐式選擇權定價方法。
     - 同時，也可以執行資料夾`bin`中的`MyApp`來運行。
 
 
@@ -508,3 +515,11 @@ std::cout << std::setw(widths[0]) << std::left << method
     - 使用 `auto` 可以自動推斷出 `MakeMCEuropeanEngine` 的類型，簡化代碼。
     - `MakeMCEuropeanEngine` 是 QuantLib 庫中的一個函數，用於創建基於蒙特卡羅方法的選擇權定價引擎。
     - `PseudoRandom` 是一種偽隨機數生成器，用於蒙特卡羅模擬。
+
+## 結語
+
+本次是我第一次在`C++`運行`Quantlib`，過往都是較常`python`進行相關的運算。我也知道`C` based在運算精度上擁有很大的優勢，對於金融在使用利率或是相關的浮點數都是很重要的一環，但在前置作業的確是困擾我很久，總是要找哪裡出現問題導致無法run或是安裝失敗，也有出現在上週可以run，但今天就發現錯誤訊息導致無法運行。
+
+我最初都是使用`windows 11 VS code`運行，也都很順利可以在課堂中進行老師題中的演示，但隨著期末報告要使用Quantlib時就出現許多不可控問題。最後還是使用windows 11上的`Linux Ubuntu`成功運行了，只能說環境越單純對於`C++`來說能夠更加順利運行，否則在`windows`上面運行都是需要再調整環境參數，且調整完後也會發現仍有失敗出現。雖然`Linux`在我的電腦中可以順利運行，但並非對於所有人來說是可以順利執行的，例如有個下午我跟黃群翔同學就是在嘗試如何用老師提供的`Linux Ubuntu`方法安裝，總是出現錯誤訊息，一開始以為是Ninja也要安裝或是有步驟是沒有確實執行到，我們在經過刪除及重新安裝反反覆覆試不下10次，但最後就是看到錯誤訊息中有段是`C++: fatal error: Killed signal terminated program cc1plus`，原來是虛擬機(`Ubuntu`)內容不足，最後我們是參照 https://blog.csdn.net/weixin_44796670/article/details/121234446 ，創建`swap`分區得以解決。總而言之，為了可以順利運行`C++`和`Quantlib`，費勁了很大的功夫，不像`python`可以使用`google colab`或是`anaconda`就順順的解決。
+
+最後我在本堂課程中學到最多的還是`C++`的嚴謹精神，無論是要設用`Real`還是`double`來設定精度，還是用一般的指標還是要`const`指標都是在撰寫時需要參考的。往後其實很多東西也都是像`Quantlib`一樣是經顧模組化的程式，藉由模組化能夠更加彈性以及快速的變更，倘若寫死在程式中則會出現更換一個版本，全部程式都需要動，可謂牽一髮而動全身，對於使用者或是廠商都是非常高成本的事情。因此往後我在開發時，就會想辦法將程式模組化，而並非是一個程式只能用在一個地方。

@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>
+        金融計算程式運用（二）期末報告 - HackMD
+    </title>
+    <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+    <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" integrity="sha256-QiWfLIsCT02Sdwkogf6YMiQlj4NE84MKkzEMkZnMGdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous" />
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i|Source+Code+Pro:300,400,500|Source+Sans+Pro:300,300i,400,400i,600,600i|Source+Serif+Pro&subset=latin-ext);.hljs{background:#fff;color:#333;display:block;overflow-x:auto;padding:.5em}.hljs-comment,.hljs-meta{color:#969896}.hljs-emphasis,.hljs-quote,.hljs-string,.hljs-strong,.hljs-template-variable,.hljs-variable{color:#df5000}.hljs-keyword,.hljs-selector-tag,.hljs-type{color:#a71d5d}.hljs-attribute,.hljs-bullet,.hljs-literal,.hljs-number,.hljs-symbol{color:#0086b3}.hljs-built_in,.hljs-builtin-name{color:#005cc5}.hljs-name,.hljs-section{color:#63a35c}.hljs-tag{color:#333}.hljs-attr,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-selector-pseudo,.hljs-title{color:#795da3}.hljs-addition{background-color:#eaffea;color:#55a532}.hljs-deletion{background-color:#ffecec;color:#bd2c00}.hljs-link{text-decoration:underline}.markdown-body{word-wrap:break-word;font-size:16px;line-height:1.5}.markdown-body:after,.markdown-body:before{content:"";display:table}.markdown-body:after{clear:both}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#c00}.markdown-body .anchor{float:left;line-height:1;margin-left:-20px;padding-right:4px}.markdown-body .anchor:focus{outline:none}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-bottom:16px;margin-top:0}.markdown-body hr{background-color:#e7e7e7;border:0;height:.25em;margin:24px 0;padding:0}.markdown-body blockquote{border-left:.25em solid #ddd;color:#777;font-size:16px;padding:0 1em}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body kbd,.popover kbd{background-color:#fcfcfc;border:1px solid;border-color:#ccc #ccc #bbb;border-radius:3px;box-shadow:inset 0 -1px 0 #bbb;color:#555;display:inline-block;font-size:11px;line-height:10px;padding:3px 5px;vertical-align:middle}.markdown-body .loweralpha{list-style-type:lower-alpha}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{font-weight:600;line-height:1.25;margin-bottom:16px;margin-top:24px}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#000;vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{font-size:inherit}.markdown-body h1{font-size:2em}.markdown-body h1,.markdown-body h2{border-bottom:1px solid #eee;padding-bottom:.3em}.markdown-body h2{font-size:1.5em}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{color:#777;font-size:.85em}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol.no-list,.markdown-body ul.no-list{list-style-type:none;padding:0}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-bottom:0;margin-top:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{padding-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{font-size:1em;font-style:italic;font-weight:700;margin-top:16px;padding:0}.markdown-body dl dd{margin-bottom:16px;padding:0 16px}.markdown-body table{display:block;overflow:auto;width:100%;word-break:normal;word-break:keep-all}.markdown-body table th{font-weight:700}.markdown-body table td,.markdown-body table th{border:1px solid #ddd;padding:6px 13px}.markdown-body table tr{background-color:#fff;border-top:1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color:#f8f8f8}.markdown-body img{background-color:#fff;box-sizing:initial;max-width:100%}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{background-color:initial;max-width:none;vertical-align:text-top}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{border:1px solid #ddd;display:block;float:left;margin:13px 0 0;overflow:hidden;padding:7px;width:auto}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}.markdown-body span.align-center{clear:both;display:block;overflow:hidden}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{clear:both;display:block;overflow:hidden}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{background-color:#0000000a;border-radius:3px;font-size:85%;margin:0;padding:.2em 0}.markdown-body code:after,.markdown-body code:before,.markdown-body tt:after,.markdown-body tt:before{content:"\00a0";letter-spacing:-.2em}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre{word-wrap:normal}.markdown-body pre>code{background:#0000;border:0;font-size:100%;margin:0;padding:0;white-space:pre;word-break:normal}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{border-radius:3px;font-size:85%;line-height:1.45;overflow:auto}.markdown-body:not(.next-editor) pre{background-color:#f7f7f7;padding:16px}.markdown-body pre code,.markdown-body pre tt{word-wrap:normal;background-color:initial;border:0;display:inline;line-height:inherit;margin:0;max-width:auto;overflow:visible;padding:0}.markdown-body pre code:after,.markdown-body pre code:before,.markdown-body pre tt:after,.markdown-body pre tt:before{content:normal}.markdown-body .csv-data td,.markdown-body .csv-data th{font-size:12px;line-height:1;overflow:hidden;padding:5px;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-line-num{background:#fff;border:0;padding:10px 8px 9px;text-align:right}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{background:#f8f8f8;border-top:0;font-weight:700}.news .alert .markdown-body blockquote{border:0;padding:0 0 0 40px}.activity-tab .news .alert .commits,.activity-tab .news .markdown-body blockquote{padding-left:0}.task-list-item{list-style-type:none}.task-list-item label{font-weight:400}.task-list-item.enabled label{cursor:pointer}.task-list-item+.task-list-item{margin-top:3px}.task-list-item-checkbox{cursor:default!important;float:left;margin:.31em 0 .2em -1.3em!important;vertical-align:middle}.markdown-body{max-width:758px;overflow:visible!important;padding-bottom:40px;padding-top:40px;position:relative}.markdown-body.next-editor{overflow-x:hidden!important}.markdown-body .emoji{vertical-align:top}.markdown-body pre{border:inherit!important}.markdown-body code{color:inherit!important}.markdown-body pre code .wrapper{display:-moz-inline-flex;display:-ms-inline-flex;display:-o-inline-flex;display:inline-flex}.markdown-body pre code .gutter{float:left;overflow:hidden;-webkit-user-select:none;user-select:none}.markdown-body pre code .gutter.linenumber{border-right:3px solid #6ce26c!important;box-sizing:initial;color:#afafaf!important;cursor:default;display:inline-block;min-width:20px;padding:0 8px 0 0;position:relative;text-align:right;z-index:4}.markdown-body pre code .gutter.linenumber>span:before{content:attr(data-linenumber)}.markdown-body pre code .code{float:left;margin:0 0 0 16px}.markdown-body .gist .line-numbers{border-bottom:none;border-left:none;border-top:none}.markdown-body .gist .line-data{border:none}.markdown-body .gist table{border-collapse:inherit!important;border-spacing:0}.markdown-body code[data-gist-id]{background:none;padding:0}.markdown-body code[data-gist-id]:after,.markdown-body code[data-gist-id]:before{content:""}.markdown-body code[data-gist-id] .blob-num{border:unset}.markdown-body code[data-gist-id] table{margin-bottom:unset;overflow:unset}.markdown-body code[data-gist-id] table tr{background:unset}.markdown-body[dir=rtl] pre{direction:ltr}.markdown-body[dir=rtl] code{direction:ltr;unicode-bidi:embed}.markdown-body .alert{display:flex;flex-direction:column;gap:16px}.markdown-body .alert>*{margin:0}.markdown-body pre.abc,.markdown-body pre.flow-chart,.markdown-body pre.graphviz,.markdown-body pre.mermaid,.markdown-body pre.sequence-diagram,.markdown-body pre.vega{background-color:inherit;border-radius:0;overflow:visible;text-align:center;white-space:inherit}.markdown-body pre.abc>code,.markdown-body pre.flow-chart>code,.markdown-body pre.graphviz>code,.markdown-body pre.mermaid>code,.markdown-body pre.sequence-diagram>code,.markdown-body pre.vega>code{text-align:left}.markdown-body pre.abc>svg,.markdown-body pre.flow-chart>svg,.markdown-body pre.graphviz>svg,.markdown-body pre.mermaid>svg,.markdown-body pre.sequence-diagram>svg,.markdown-body pre.vega>svg{height:100%;max-width:100%}.markdown-body pre>code.wrap{word-wrap:break-word;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap}.markdown-body summary{display:list-item}.markdown-body summary:focus{outline:none}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none}.markdown-body figure{margin:1em 40px}.markdown-body .mark,.markdown-body mark{background-color:#fff1a7}.vimeo,.youtube{background-color:#000;background-position:50%;background-repeat:no-repeat;background-size:contain;cursor:pointer;display:table;overflow:hidden;text-align:center}.vimeo,.youtube{position:relative;width:100%}.youtube{padding-bottom:56.25%}.vimeo img{object-fit:contain;width:100%;z-index:0}.youtube img{object-fit:cover;z-index:0}.vimeo iframe,.youtube iframe,.youtube img{height:100%;left:0;position:absolute;top:0;width:100%}.vimeo iframe,.youtube iframe{vertical-align:middle;z-index:1}.vimeo .icon,.youtube .icon{color:#fff;height:auto;left:50%;opacity:.3;position:absolute;top:50%;transform:translate(-50%,-50%);transition:opacity .2s;width:auto;z-index:0}.vimeo:hover .icon,.youtube:hover .icon{opacity:.6;transition:opacity .2s}.slideshare .inner,.speakerdeck .inner{position:relative;width:100%}.slideshare .inner iframe,.speakerdeck .inner iframe{bottom:0;height:100%;left:0;position:absolute;right:0;top:0;width:100%}.figma{display:table;padding-bottom:56.25%;position:relative;width:100%}.figma iframe{border:1px solid #eee;bottom:0;height:100%;left:0;position:absolute;right:0;top:0;width:100%}.markmap-container{height:300px}.markmap-container>svg{height:100%;width:100%}.MJX_Assistive_MathML{display:none}#MathJax_Message{z-index:1000!important}.ui-infobar{color:#777;margin:25px auto -25px;max-width:760px;position:relative;z-index:2}.toc .invisable-node{list-style-type:none}.ui-toc{bottom:20px;position:fixed;z-index:998}.ui-toc.both-mode{margin-left:8px}.ui-toc.both-mode .ui-toc-label{border-bottom-left-radius:0;border-top-left-radius:0;height:40px;padding:10px 4px}.ui-toc-label{background-color:#e6e6e6;border:none;color:#868686;transition:opacity .2s}.ui-toc .open .ui-toc-label{color:#fff;opacity:1;transition:opacity .2s}.ui-toc-label:focus{background-color:#ccc;color:#000;opacity:.3}.ui-toc-label:hover{background-color:#ccc;opacity:1;transition:opacity .2s}.ui-toc-dropdown{margin-bottom:20px;margin-top:20px;max-height:70vh;max-width:45vw;overflow:auto;padding-left:10px;padding-right:10px;text-align:inherit;width:25vw}.ui-toc-dropdown>.toc{max-height:calc(70vh - 100px);overflow:auto}.ui-toc-dropdown[dir=rtl] .nav{letter-spacing:.0029em;padding-right:0}.ui-toc-dropdown a{overflow:hidden;text-overflow:ellipsis;white-space:pre}.ui-toc-dropdown .nav>li>a{color:#767676;display:block;font-size:13px;font-weight:500;padding:4px 20px}.ui-toc-dropdown .nav>li:first-child:last-child>ul,.ui-toc-dropdown .toc.expand ul{display:block}.ui-toc-dropdown .nav>li>a:focus,.ui-toc-dropdown .nav>li>a:hover{background-color:initial;border-left:1px solid #000;color:#000;padding-left:19px;text-decoration:none}.ui-toc-dropdown[dir=rtl] .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav>li>a:hover{border-left:none;border-right:1px solid #000;padding-right:19px}.ui-toc-dropdown .nav>.active:focus>a,.ui-toc-dropdown .nav>.active:hover>a,.ui-toc-dropdown .nav>.active>a{background-color:initial;border-left:2px solid #000;color:#000;font-weight:700;padding-left:18px}.ui-toc-dropdown[dir=rtl] .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav>.active>a{border-left:none;border-right:2px solid #000;padding-right:18px}.ui-toc-dropdown .nav .nav{display:none;padding-bottom:10px}.ui-toc-dropdown .nav>.active>ul{display:block}.ui-toc-dropdown .nav .nav>li>a{font-size:12px;font-weight:400;padding-bottom:1px;padding-left:30px;padding-top:1px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a{padding-right:30px}.ui-toc-dropdown .nav .nav>li>ul>li>a{font-size:12px;font-weight:400;padding-bottom:1px;padding-left:40px;padding-top:1px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a{padding-right:40px}.ui-toc-dropdown .nav .nav>li>a:focus,.ui-toc-dropdown .nav .nav>li>a:hover{padding-left:29px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:hover{padding-right:29px}.ui-toc-dropdown .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown .nav .nav>li>ul>li>a:hover{padding-left:39px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:hover{padding-right:39px}.ui-toc-dropdown .nav .nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>a{font-weight:500;padding-left:28px}.ui-toc-dropdown[dir=rtl] .nav .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>a{padding-right:28px}.ui-toc-dropdown .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active>a{font-weight:500;padding-left:38px}.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active>a{padding-right:38px}.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang^=ja] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang=zh-tw] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang=zh-cn] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang^=ja]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang=zh-tw]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang=zh-cn]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang^=ja] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ Ｐゴシック,sans-serif}html[lang=zh-tw] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html[lang=zh-cn] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}html .ui-toc-dropdown[lang^=ja]{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ Ｐゴシック,sans-serif}html .ui-toc-dropdown[lang=zh-tw]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html .ui-toc-dropdown[lang=zh-cn]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}.ui-affix-toc{max-height:70vh;max-width:15vw;overflow:auto;position:fixed;top:0}.back-to-top,.expand-toggle,.go-to-bottom{color:#999;display:block;font-size:12px;font-weight:500;margin-left:10px;margin-top:10px;padding:4px 10px}.back-to-top:focus,.back-to-top:hover,.expand-toggle:focus,.expand-toggle:hover,.go-to-bottom:focus,.go-to-bottom:hover{color:#563d7c;text-decoration:none}.back-to-top,.go-to-bottom{margin-top:0}.ui-user-icon{background-position:50%;background-repeat:no-repeat;background-size:cover;border-radius:50%;display:block;height:20px;margin-bottom:2px;margin-right:5px;margin-top:2px;width:20px}.ui-user-icon.small{display:inline-block;height:18px;margin:0 0 .2em;vertical-align:middle;width:18px}.ui-infobar>small>span{line-height:22px}.ui-infobar>small .dropdown{display:inline-block}.ui-infobar>small .dropdown a:focus,.ui-infobar>small .dropdown a:hover{text-decoration:none}.ui-more-info{color:#888;cursor:pointer;vertical-align:middle}.ui-more-info .fa{font-size:16px}.ui-connectedGithub,.ui-published-note{color:#888}.ui-connectedGithub{line-height:23px;white-space:nowrap}.ui-connectedGithub a.file-path{color:#888;padding-left:22px;text-decoration:none}.ui-connectedGithub a.file-path:active,.ui-connectedGithub a.file-path:hover{color:#888;text-decoration:underline}.ui-connectedGithub .fa{font-size:20px}.ui-published-note .fa{font-size:20px;vertical-align:top}.unselectable{-webkit-user-select:none;-o-user-select:none;user-select:none}.selectable{-webkit-user-select:text;-o-user-select:text;user-select:text}.inline-spoiler-section{cursor:pointer}.inline-spoiler-section .spoiler-text{background-color:#333;border-radius:2px}.inline-spoiler-section .spoiler-text>*{opacity:0}.inline-spoiler-section .spoiler-img{filter:blur(10px)}.inline-spoiler-section.raw{background-color:#333;border-radius:2px}.inline-spoiler-section.raw>*{opacity:0}.inline-spoiler-section.unveil{cursor:auto}.inline-spoiler-section.unveil .spoiler-text{background-color:#3333331a}.inline-spoiler-section.unveil .spoiler-text>*{opacity:1}.inline-spoiler-section.unveil .spoiler-img{filter:none}@media print{blockquote,div,img,pre,table{page-break-inside:avoid!important}a[href]:after{font-size:12px!important}}.markdown-body.slides{color:#222;position:relative;z-index:1}.markdown-body.slides:before{background-color:currentColor;bottom:0;box-shadow:0 0 0 50vw;content:"";display:block;left:0;position:absolute;right:0;top:0;z-index:-1}.markdown-body.slides section[data-markdown]{background-color:#fff;margin-bottom:1.5em;position:relative;text-align:center}.markdown-body.slides section[data-markdown] code{text-align:left}.markdown-body.slides section[data-markdown]:before{content:"";display:block;padding-bottom:56.23%}.markdown-body.slides section[data-markdown]>div:first-child{left:1em;max-height:100%;overflow:hidden;position:absolute;right:1em;top:50%;transform:translateY(-50%)}.markdown-body.slides section[data-markdown]>ul{display:inline-block}.markdown-body.slides>section>section+section:after{border:3px solid #777;content:"";height:1.5em;position:absolute;right:1em;top:-1.5em}.site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,sans-serif}html[lang^=ja] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif}html[lang=zh-tw] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}body{font-smoothing:subpixel-antialiased!important;-webkit-font-smoothing:subpixel-antialiased!important;-moz-osx-font-smoothing:auto!important;-webkit-overflow-scrolling:touch;font-family:Source Sans Pro,Helvetica,Arial,sans-serif;letter-spacing:.025em}html[lang^=ja] body{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif}html[lang=zh-tw] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}abbr[data-original-title],abbr[title]{cursor:help}body.modal-open{overflow-y:auto;padding-right:0!important}svg{text-shadow:none}
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="doc" class="markdown-body container-fluid comment-enabled comment-inner" data-hard-breaks="true" style=""><h1 id="金融計算程式運用（二）期末報告" data-id="金融計算程式運用（二）期末報告" data-original-title="" title=""><a class="anchor hidden-xs" href="#金融計算程式運用（二）期末報告" title="金融計算程式運用（二）期末報告"><span class="octicon octicon-link"></span></a><span>金融計算程式運用（二）期末報告</span></h1><ul>
+<li><span>學生: 金融所 碩二 陳旻寬 111352021</span></li>
+</ul><h2 data-id="摘要" id="摘要"><a class="anchor hidden-xs" href="#摘要" title="摘要"><span class="octicon octicon-link"></span></a><span>摘要</span></h2><ul>
+<li><span>參照</span><code>Quantlib</code><span>當中的選擇權定價模型</span><br>
+<code>.\Myproj\external\QuantLib-1.32\Examples\EquityOption\EquityOption.cpp</code></li>
+<li><span>觀察</span><code>Quantlib</code><span>如何使用Black-Scholes for European、Finite differences、Binomial Cox-Ross-Rubinstein、Monte Carlo Method: MC (crude)等四種歐式選擇權定價方法。</span></li>
+</ul><h2 id="資料" data-id="資料"><a class="anchor hidden-xs" href="#資料" title="資料"><span class="octicon octicon-link"></span></a><span>資料</span></h2><ul>
+<li><span>期末報告說明與主程式(github):</span>
+<ul>
+<li><span>說明在</span><code>README.md</code><span>，但避免無法閱讀故也補充上</span><code>README.html</code><span>。</span></li>
+<li><span>github中僅放主程式</span><code>main.cpp</code><span>。</span></li>
+<li><a href="https://github.com/MinKuanIsHere/Quantlib_Option_Project" target="_blank" rel="noopener"><span>https://github.com/MinKuanIsHere/Quantlib_Option_Project</span></a></li>
+</ul>
+</li>
+<li><span>完整程式碼(google雲端):</span>
+<ul>
+<li><span>此為包含</span><code>CMakeLists.txt</code><span>、</span><code>main.cpp</code><span>、</span><code>Quantlib</code><span>等程式。</span></li>
+<li><a href="https://drive.google.com/drive/folders/1D77Sn-sshaxzuvfPoWClDor7IWlOHriu?usp=sharing" target="_blank" rel="noopener"><span>https://drive.google.com/drive/folders/1D77Sn-sshaxzuvfPoWClDor7IWlOHriu?usp=sharing</span></a></li>
+</ul>
+</li>
+</ul><h2 id="Start-C-and-Quantlib" data-id="Start-C-and-Quantlib"><a class="anchor hidden-xs" href="#Start-C-and-Quantlib" title="Start-C-and-Quantlib"><span class="octicon octicon-link"></span></a><span>Start C++ and Quantlib</span></h2><ul>
+<li>
+<p><span>使用</span><code>window 11</code><span>中的</span><code>Linux &amp; Ubuntu</code><span>運行</span><code>C++</code><span>和</span><code>Quantlib</code></p>
+</li>
+<li>
+<p><span>Install </span><code>Linux</code><span> on </span><code>windows 11</code></p>
+<ul>
+<li>
+<p><a href="https://learn.microsoft.com/zh-tw/windows/wsl/install" target="_blank" rel="noopener"><span>https://learn.microsoft.com/zh-tw/windows/wsl/install</span></a></p>
+</li>
+<li>
+<p><span>安裝使用單一命令執行 WSL 所需的所有項目。 以滑鼠右鍵按一下並選取 [以系統管理員身分執行]，在系統管理員模式中開啟 </span><code>PowerShell</code><span> 或 </span><code>Windows</code><span> 命令提示字元，輸入 </span><code>wsl --install</code><span> 命令，然後重新開機電腦。</span></p>
+</li>
+<li>
+<p><span>重開機後打開檔案總管是否有</span><strong><span>Linux(企鵝圖示)</span></strong><span> </span><img src="https://hackmd.io/_uploads/B1OJe0LKa.png" alt="image" loading="lazy"></p>
+</li>
+<li>
+<p><span>重開機後可以在</span><strong><span>windows圖示</span></strong><span>中輸入</span><code>Ubunto</code><span>，並打開。初始運行方式請參照同個網站說明。</span></p>
+</li>
+</ul>
+</li>
+<li>
+<p><span>Install C++ and Quantlib on Linux</span></p>
+<ul>
+<li><a href="https://rpubs.com/zhenghuii/CppFin1" target="_blank" rel="noopener"><span>https://rpubs.com/zhenghuii/CppFin1</span></a></li>
+<li><span>follow section 補充：在 </span><code>Windows</code><span> 電腦安裝 </span><code>WSL（Linux）</code><span>，並使用 VS code 開發 C++</span></li>
+<li><span>Boost是運行Quantlib必要程式</span><code>sudo apt-get install libboost-all-dev</code><span>， (</span><a href="https://www.quantlib.org/install/linux.shtml" target="_blank" rel="noopener"><span>https://www.quantlib.org/install/linux.shtml</span></a><span>)</span></li>
+<li><span>記得安裝 Visual Studio Code 必要的『延伸模組』：如與 cmake相關、WSL 相關等</span></li>
+</ul>
+</li>
+<li>
+<p><span>執行說明</span></p>
+<ul>
+<li><code>CMakeLists.txt</code><span>遵從講義CppFin1進行Build。</span></li>
+<li><span>在資料夾</span><code>src</code><span>中執行</span><code>main.cpp</code><span>，內容為使用Quantlib計算選擇權價格，包含Black-Scholes for European、Finite differences、Binomial Cox-Ross-Rubinstein、Monte Carlo Method: MC (crude)等四種歐式選擇權定價方法。</span></li>
+<li><span>同時，也可以執行資料夾</span><code>bin</code><span>中的</span><code>MyApp</code><span>來運行。</span></li>
+</ul>
+</li>
+</ul><h2 id="引入庫和命名空間：" data-id="引入庫和命名空間："><a class="anchor hidden-xs" href="#引入庫和命名空間：" title="引入庫和命名空間："><span class="octicon octicon-link"></span></a><span>引入庫和命名空間：</span></h2><pre><code>/* -*- mode: c++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */ //標記版本，讓使用者可以得知當前程式碼所適用的版本
+#include &lt;ql/qldefines.hpp&gt; 
+#if !defined(BOOST_ALL_NO_LIB) &amp;&amp; defined(BOOST_MSVC)
+#  include &lt;ql/auto_link.hpp&gt;
+#endif
+#include &lt;ql/instruments/vanillaoption.hpp&gt;
+#include &lt;ql/pricingengines/vanilla/analyticeuropeanengine.hpp&gt;
+#include &lt;ql/pricingengines/vanilla/binomialengine.hpp&gt;
+#include &lt;ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp&gt;
+#include &lt;ql/pricingengines/vanilla/integralengine.hpp&gt;
+#include &lt;ql/pricingengines/vanilla/mceuropeanengine.hpp&gt;
+#include &lt;ql/time/calendars/target.hpp&gt;
+#include &lt;ql/utilities/dataformatters.hpp&gt;
+#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+
+using namespace QuantLib;
+</code></pre><ul>
+<li><code>/* -*- mode: c++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */</code>
+<ul>
+<li><span>這是一個特殊的註釋，用於告訴支持Emacs或Vim這樣的文本編輯器關於文件的格式化設置。mode: c++ 表示文件應該被當作C++源代碼處理</span><code>tab-width: 4</code><span> 設置制表符寬度為4個空格。</span><code>indent-tabs-mode: nil</code><span> 表示不使用制表符進行縮進，而是使用空格。</span><code>c-basic-offset: 4</code><span> 設置基本縮進級別為4個空格。</span></li>
+</ul>
+</li>
+<li><code>#include &lt;ql/qldefines.hpp&gt;</code>
+<ul>
+<li><span>引入了QuantLib庫的一些基本定義。qldefines.hpp 是QuantLib庫中的一個頭文件，它包含了庫的基本配置和定義。這是使用QuantLib進行金融計算時必須的一步。</span></li>
+</ul>
+</li>
+<li><code>#if !defined(BOOST_ALL_NO_LIB) &amp;&amp; defined(BOOST_MSVC) #  include &lt;ql/auto_link.hpp&gt; #endif </code>
+<ul>
+<li><span>這些行使用條件編譯指令來決定是否包含 </span><code>auto_link.hpp</code><span>。</span><br>
+<code>#if !defined(BOOST_ALL_NO_LIB) &amp;&amp; defined(BOOST_MSVC)</code><span> 檢查是否定義了 </span><code>BOOST_MSVC</code><span> 且沒有定義 </span><code>BOOST_ALL_NO_LIB</code><span>。這通常與使用Microsoft Visual C</span><ins><span>編譯器和Boost庫有關。</span><br>
+<code># include &lt;ql/auto_link.hpp&gt;</code><span> 如果條件為真，則包含 </span><code>auto_link.hpp</code><span>。這個頭文件用於自動鏈接到正確的QuantLib庫版本，特別是在使用Microsoft Visual C</span></ins><span>時。</span><br>
+<code>#endif</code><span> 結束條件編譯塊。</span></li>
+</ul>
+</li>
+<li><code>#include &lt;ql/xxx/xxx.hpp&gt;</code><span> 為來自QuantLib的標頭檔，用於引入QuantLib庫。</span></li>
+<li><code>using namespace QuantLib</code><span>; 允許我們直接使用QuantLib命名空間中的類和函數，而不需要每次都加上 </span><code>QuantLib::</code><span> 前綴。在Quantlib中</span><code>.cpp</code><span>或是</span><code>.hpp</code><span>都是用</span><code>namespace QuantLib{...}</code><span>開頭，所以在</span><code>main.cpp</code><span>就引用可以省去很多命名的麻煩。</span></li>
+<li><code>#include &lt;ql/instruments/vanillaoption.hpp&gt;</code><span>當中有個關鍵是用來判斷選擇權的樣態，例如是歐式或美式，甚至是有無包含股利:</span></li>
+</ul><pre><code>switch (exercise_-&gt;type()) {
+    case Exercise::European:
+        if (dividends.empty())
+            engine = std::make_unique&lt;AnalyticEuropeanEngine&gt;(newProcess);
+        else
+            engine = std::make_unique&lt;AnalyticDividendEuropeanEngine&gt;(newProcess, dividends);
+        break;
+    case Exercise::American:
+    case Exercise::Bermudan: 
+</code></pre><ul>
+<li><span>當中使用switch我認為不是非常洽當，應該可以單純使用</span><code>ifelse</code><span>就可以解決，同時讓程式碼更加易讀。例如</span></li>
+</ul><pre><code>if (Exercise==European){
+    if (dividends.empty())
+        engine = std::make_unique&lt;AnalyticEuropeanEngine&gt;(newProcess);
+    else
+        engine = std::make_unique&lt;AnalyticDividendEuropeanEngine&gt;(newProcess, dividends);
+    break;
+    }
+else if {Exercise==American};
+else if {Exercise==Bermudan};
+
+</code></pre><ul>
+<li>
+<p><code>#include &lt;ql/pricingengines/vanilla/analyticeuropeanengine.hpp&gt;</code><span>為進行選擇權定價的參數初始化。</span></p>
+</li>
+<li>
+<p><code>#include &lt;ql/pricingengines/vanilla/binomialengine.hpp&gt;</code><span>為使用二元樹進行選擇權定價:</span></p>
+</li>
+</ul><pre><code>Real delta = (p1u - p1d) / (s1u - s1d);
+</code></pre><ul>
+<li><code>Real</code><span> 在QuantLib中是一個自定義的數據類型。它通常被定義為 </span><code>double</code><span>，但這種定義可以根據需要更改。這意味著QuantLib可以選擇使用不同的數據類型來定義 </span><code>Real</code><span>，而不必修改庫的每個部分。</span><code>double</code><span> 是C++標準中定義的原生數據類型。它通常用於表示雙精度浮點數，並在大多數平台上遵循IEEE 754標準。</span></li>
+<li><code>#include &lt;ql/time/calendars/target.hpp&gt;</code><span>和</span><br>
+<code>#include &lt;ql/utilities/dataformatters.hpp&gt;</code><span>都是在Quantlib中使用日期格式的統一標準，方便使用。</span></li>
+</ul><h2 id="主函數（main）的設置" data-id="主函數（main）的設置"><a class="anchor hidden-xs" href="#主函數（main）的設置" title="主函數（main）的設置"><span class="octicon octicon-link"></span></a><span>主函數（main）的設置</span></h2><pre><code> try {...
+     // Here is option pricing code
+     ...
+     return 0;
+     } catch (std::exception&amp; e) {
+        std::cerr &lt;&lt; e.what() &lt;&lt; std::endl;
+        return 1;
+    } catch (...) {
+        std::cerr &lt;&lt; "unknown error" &lt;&lt; std::endl;
+        return 1;
+    }
+</code></pre><ul>
+<li><code>try</code><span> 和 </span><code>catch</code><span> 塊用於異常處理。如果在 </span><code>try</code><span> 塊中的代碼執行過程中出現錯誤，則會跳轉到 </span><code>catch</code><span> 塊，並打印錯誤信息。 </span><code>catch</code><span> 塊提供了一種機制來優雅地處理程序中可能發生的預期和非預期異常。這樣做的好處是，即使程序遇到錯誤，它也不會突然崩潰，而是會提供一些錯誤信息，並以一種受控的方式結束。這對於調試和維護大型軟件應用來說非常重要。</span></li>
+<li><code>try</code><span>執行的程式為我們想要執行的選擇權定價。</span></li>
+<li><code>catch (std::exception&amp; e)</code><span> 用於捕獲派生自 </span><code>std::exception</code><span> 的異常。</span><code>std::exception</code><span> 是C++標準庫中所有標準異常類的父類別(基類)。當捕獲到這樣的異常時，會執行以下操作：</span>
+<ul>
+<li><code>std::cerr &lt;&lt; e.what() &lt;&lt; std::endl;</code><span>：這行代碼將異常對象 </span><code>e</code><span> 的描述信息輸出到標準錯誤流（</span><code>std::cerr</code><span>）。</span><code>e.what()</code><span> 是 </span><code>std::exception</code><span> 類中定義的一個成員函數，它返回一個表示異常詳細信息的字符串。</span></li>
+<li><code>return 1;</code><span>：這表示程序以錯誤代碼 1 結束。在操作系統中，非零的退出代碼通常表示程序遇到了錯誤。</span></li>
+</ul>
+</li>
+<li><code>catch (...)</code><br>
+<span>這個 </span><code>catch</code><span> 塊是一個“捕獲所有”類型的處理器，它可以捕獲所有類型的異常，包括那些不是派生自 </span><code>std::exception</code><span> 的異常。當捕獲到這樣的異常時，會執行以下操作：</span>
+<ul>
+<li><code>std::cerr &lt;&lt; "unknown error" &lt;&lt; std::endl;</code><span>：由於這類異常可能不包含具體的錯誤信息，因此這行代碼只是將一個通用的錯誤消息輸出到標準錯誤流。</span></li>
+<li><code>return 1;</code><span>：同樣表示程序以錯誤代碼 1 結束。</span></li>
+</ul>
+</li>
+</ul><h2 id="參數設定" data-id="參數設定"><a class="anchor hidden-xs" href="#參數設定" title="參數設定"><span class="octicon octicon-link"></span></a><span>參數設定</span></h2><h3 id="日期參數設定" data-id="日期參數設定"><a class="anchor hidden-xs" href="#日期參數設定" title="日期參數設定"><span class="octicon octicon-link"></span></a><span>日期參數設定</span></h3><pre><code>//日期參數設定
+Calendar calendar = TARGET(); //獲取歐洲交易的日曆
+Date todaysDate(10, January, 2024); //起始日
+Date settlementDate(13, January, 2024); //到期日
+Settings::instance().evaluationDate() = todaysDate; //當前日期
+</code></pre><ul>
+<li><code>Calendar calendar = TARGET();</code>
+<ul>
+<li><span>創建一個 </span><code>Calendar</code><span> 對象，並將其初始化為 </span><code>TARGET</code><span> 日曆。</span></li>
+<li><span>TARGET（Trans-European Automated Real-time Gross settlement Express Transfer system）是歐洲的主要支付系統，代表了歐元區的標準交易日曆。TARGET 日曆提供了一個常用的、標準化的交易日曆，適用於許多涉及歐元區的金融計算。</span></li>
+<li><code>Calendar</code><span> 是一個專門用於表示和處理日曆的類型，在QuantLib中用於處理與日期相關的各種計算。</span></li>
+</ul>
+</li>
+<li><code>Date todaysDate(10, January, 2024);</code>
+<ul>
+<li><span>創建一個 </span><code>Date</code><span> 對象，表示的日期是2024年1月10日。設定“今天的日期”是許多金融計算的起點，例如，在定價選擇權或計算利息時。</span></li>
+<li><code>Date</code><span> 是QuantLib中用於表示日期的類型，提供一種標準化的方式來處理日期。</span></li>
+</ul>
+</li>
+<li><code>Date settlementDate(13, January, 2024);</code>
+<ul>
+<li><span>創建一個 Date 對象，名為 settlementDate，指結算日期，此處設定日期是2024年1月13日。</span></li>
+</ul>
+</li>
+<li><code>Settings::instance().evaluationDate() = todaysDate;</code>
+<ul>
+<li><span>將QuantLib的全局設置中的評估日期設置為 </span><code>todaysDate</code><span>。</span></li>
+<li><span>設置全局評估日期是為了確保所有的定價和計算都是基於同一個“當前日期”。</span></li>
+<li><span>使用 </span><code>Date</code><span> 類型作為 </span><code>evaluationDate</code><span> 的值，以保持數據類型的一致性，並利用 </span><code>Date</code><span> 類型提供的功能。</span></li>
+</ul>
+</li>
+</ul><h3 id="選擇權參數設定" data-id="選擇權參數設定"><a class="anchor hidden-xs" href="#選擇權參數設定" title="選擇權參數設定"><span class="octicon octicon-link"></span></a><span>選擇權參數設定</span></h3><pre><code>//選擇權參數設定
+Option::Type type(Option::Put);
+Real underlying = 17465; //現貨價格
+Real strike = 17500; //履約價
+Spread dividendYield = 0.00; //股利率
+Rate riskFreeRate = 0.01; //無風險利率
+Volatility volatility = 0.03; //波動率
+Date maturity(17, January, 2024);  //合約存續
+DayCounter dayCounter = Actual365Fixed();
+</code></pre><ul>
+<li><code>Option::Type type(Option::Put);</code>
+<ul>
+<li><span>定義選擇權的類型為賣權（Put）。</span></li>
+<li><span>Option::Type 是一個枚舉型態，用於清晰地表示選擇權的類型。</span></li>
+<li><span>若想要使用 Call (買權)則設定為</span><code>Option::Type type(Option::Call);</code><span>。</span></li>
+<li><span>在路徑</span><code>\external\QuantLib-1.32\ql\option.hpp</code><span>中可以看到更加詳細的設定</span></li>
+</ul>
+</li>
+</ul><pre><code>class Option : public Instrument {
+public:
+class arguments;
+enum Type { Put = -1,
+            Call = 1
+};
+Option(ext::shared_ptr&lt;Payoff&gt; payoff, ext::shared_ptr&lt;Exercise&gt; exercise)
+: payoff_(std::move(payoff)), exercise_(std::move(exercise)) {}
+void setupArguments(PricingEngine::arguments*) const override;
+ext::shared_ptr&lt;Payoff&gt; payoff() const { return payoff_; }
+ext::shared_ptr&lt;Exercise&gt; exercise() const { return exercise_; };
+protected:
+// arguments
+ext::shared_ptr&lt;Payoff&gt; payoff_;
+ext::shared_ptr&lt;Exercise&gt; exercise_;
+};
+</code></pre><ul>
+<li>
+<p><code>\external\QuantLib-1.32\ql\option.hpp</code><span>說明</span></p>
+<ul>
+<li><span>枚舉 </span><code>Type</code><span>：</span><code>enum Type { Put = -1, Call = 1 };</code><span> 定義了一個名為 </span><code>Type</code><span> 的枚舉，其中包含兩個可能的值：Put 和 Call。這些值分別用 -1 和 1 表示。</span></li>
+<li><span>類別</span><code>class</code><span>成員：</span><code>ext::shared_ptr&lt;Payoff&gt; payoff_;</code><span> 和</span><code>ext::shared_ptr&lt;Exercise&gt; exercise_;</code><span> 是 Option 類別的成員，分別表示選擇權的損益和行使方式。</span></li>
+<li><span>構造函數：</span><code>Option(ext::shared_ptr&lt;Payoff&gt; payoff, ext::shared_ptr&lt;Exercise&gt; exercise)</code><span> 是 Option 類別的構造函數，用於創建 Option 對象。</span></li>
+<li><span>在 </span><code>Option::Type type(Option::Put);</code><span> 時，實際上是在做以下幾件事情：</span>
+<ul>
+<li><span>使用 </span><code>Type</code><span> 枚舉：您引用了在 Option 類別中定義的 </span><code>Type</code><span> 枚舉。</span></li>
+<li><span>創建 </span><code>type</code><span> 變數：您創建了一個名為 </span><code>type</code><span> 的變數，其型別為 </span><code>Option::Type</code><span>。</span></li>
+<li><span>初始化 </span><code>type</code><span> 變數：您將 </span><code>type</code><span> 變數初始化為 </span><code>Option::Put</code><span>，這意味著 </span><code>type</code><span> 變數現在表示一個賣權。</span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>Real underlying = 17465;</code></p>
+<ul>
+<li><span>設定標的資產的當前市場價格(現貨價格)。</span></li>
+<li><code>Real</code><span> 通常是一個浮點數型態，用於表示有小數部分的數值，適合用於表示價格。</span></li>
+</ul>
+</li>
+<li>
+<p><code>Real strike = 17500;</code></p>
+<ul>
+<li><span>設定選擇權的履約價格。</span></li>
+<li><span>使用 Real 型態可以確保履約價的精確表示。</span></li>
+</ul>
+</li>
+<li>
+<p><code>Spread dividendYield = 0.00;</code></p>
+<ul>
+<li><span>設定標的資產的股利率。</span></li>
+<li><code>Spread</code><span> 用於表示利差或類似的金融數值，適合用於表示股利率。</span></li>
+</ul>
+</li>
+<li>
+<p><code>Rate riskFreeRate = 0.01;</code></p>
+<ul>
+<li><span>設定無風險利率。</span></li>
+<li><code>Rate</code><span> 是專門用於表示利率的數據型態，有助於在代碼中清晰地表達這是一個利率值。</span></li>
+</ul>
+</li>
+<li>
+<p><code>Volatility volatility = 0.03;</code></p>
+<ul>
+<li><span>作用：設定標的資產價格的波動率。</span></li>
+<li><code>Volatility</code><span> 型態專門用於表示波動率，這有助於在代碼中明確區分不同的數值類型。</span></li>
+</ul>
+</li>
+<li>
+<p><code>Date maturity(17, January, 2024);</code></p>
+<ul>
+<li><span>設定選擇權的到期日。</span></li>
+<li><code>Date</code><span> 型態用於表示日期。</span></li>
+</ul>
+</li>
+<li>
+<p><code>DayCounter dayCounter = Actual365Fixed();</code></p>
+<ul>
+<li><span>選擇使用 </span><code>Actual365Fixed</code><span> 日計數標準。</span></li>
+<li><code>DayCounter</code><span> 是一種用於計算時間間隔的類型，</span><code>Actual365Fixed</code><span> 是其中一種常用的標準，假設一年固定為365天。</span></li>
+</ul>
+</li>
+</ul><h3 id="參數設定的結果印出" data-id="參數設定的結果印出"><a class="anchor hidden-xs" href="#參數設定的結果印出" title="參數設定的結果印出"><span class="octicon octicon-link"></span></a><span>參數設定的結果印出</span></h3><pre><code>//將參數設定print出
+std::cout &lt;&lt; "Option type = "  &lt;&lt; type &lt;&lt; std::endl;
+std::cout &lt;&lt; "Maturity = "        &lt;&lt; maturity &lt;&lt; std::endl;
+std::cout &lt;&lt; "Underlying price = "        &lt;&lt; underlying &lt;&lt; std::endl;
+std::cout &lt;&lt; "Strike = "                  &lt;&lt; strike &lt;&lt; std::endl;
+std::cout &lt;&lt; "Risk-free interest rate = " &lt;&lt; io::rate(riskFreeRate)
+          &lt;&lt; std::endl;
+std::cout &lt;&lt; "Dividend yield = " &lt;&lt; io::rate(dividendYield)
+          &lt;&lt; std::endl;
+std::cout &lt;&lt; "Volatility = " &lt;&lt; io::volatility(volatility)
+          &lt;&lt; std::endl;
+std::cout &lt;&lt; std::endl;
+std::string method;
+</code></pre><ul>
+<li><code>std::cout &lt;&lt; ... &lt;&lt; std::endl;</code>
+<ul>
+<li><span>這類程式碼都為print出結果</span></li>
+</ul>
+</li>
+<li><code>io::rate(riskFreeRate)</code>
+<ul>
+<li><span>用於格式化並輸出無風險利率</span><code>(riskFreeRate)</code><span>的值。</span></li>
+<li><code>io::rate()</code><span> 將這個小數格式化為更易於閱讀和理解的百分比形式（例如將 0.01 格式化為 1%）。提高了輸出的可讀性，使得無風險利率的值更容易被用戶理解。</span></li>
+</ul>
+</li>
+<li><span>io::rate(dividendYield)</span>
+<ul>
+<li><span>用於格式化並輸出股利率 </span><code>(dividendYield)</code><span> 的值。</span></li>
+<li><span>股利率也通常表示為小數，使用 </span><code>io::rate()</code><span> 可以將其轉換為更直觀的百分比形式。這樣做可以使得股利率的輸出更加清晰，幫助用戶快速理解這一重要參數。</span></li>
+</ul>
+</li>
+<li><code>io::volatility(volatility)</code>
+<ul>
+<li><span>用於格式化並輸出波動率 </span><code>(volatility)</code><span> 的值。波動率是選擇權定價中的一個關鍵參數，清晰的輸出格式有助於更好地理解和評估這一參數。</span></li>
+<li><span>波動率同樣通常以小數形式表示，</span><code>io::volatility()</code><span> 將其格式化為百分比，使得輸出更加直觀。</span></li>
+</ul>
+</li>
+</ul><h2 id="建立選擇權定價模型的前期設定" data-id="建立選擇權定價模型的前期設定"><a class="anchor hidden-xs" href="#建立選擇權定價模型的前期設定" title="建立選擇權定價模型的前期設定"><span class="octicon octicon-link"></span></a><span>建立選擇權定價模型的前期設定</span></h2><h3 id="設定輸出格式" data-id="設定輸出格式"><a class="anchor hidden-xs" href="#設定輸出格式" title="設定輸出格式"><span class="octicon octicon-link"></span></a><span>設定輸出格式</span></h3><pre><code>Size widths[] = { 35, 14, 14, 14 };
+std::cout &lt;&lt; std::setw(widths[0]) &lt;&lt; std::left &lt;&lt; "Method"
+          &lt;&lt; std::setw(widths[1]) &lt;&lt; std::left &lt;&lt; "European"
+          &lt;&lt; std::endl;
+</code></pre><ul>
+<li><span>設定輸出列的寬度，並輸出了兩個列標題：“Method” 和 “European”。為了在輸出中創建整齊的列格式，方便閱讀和理解輸出的數據。</span>
+<ul>
+<li><code>Size</code><span> 是一種用於表示大小或數量的數據型態，這裡用於設定列寬。</span></li>
+<li><code>std::setw</code><span> 和 </span><code>std::left</code><span> 來自標準庫 </span><code>&lt;iomanip&gt;</code><span>，用於設定輸出格式。</span></li>
+<li><span>先忽略選擇權的計算過程，根據這樣的輸出設定，output為</span></li>
+</ul>
+</li>
+</ul><pre><code>Method                             European
+Black-Scholes                      55.405512
+Finite differences                 55.405903  
+Binomial Cox-Ross-Rubinstein       55.401123
+MC (crude)                         55.406298   
+</code></pre><h3 id="創建歐式選擇權定價模型" data-id="創建歐式選擇權定價模型"><a class="anchor hidden-xs" href="#創建歐式選擇權定價模型" title="創建歐式選擇權定價模型"><span class="octicon octicon-link"></span></a><span>創建歐式選擇權定價模型</span></h3><pre><code>auto europeanExercise = ext::make_shared&lt;EuropeanExercise&gt;(maturity);
+
+Handle&lt;Quote&gt; underlyingH(ext::make_shared&lt;SimpleQuote&gt;(underlying));
+
+// bootstrap the yield/dividend/vol curves
+Handle&lt;YieldTermStructure&gt; flatTermStructure(
+    ext::make_shared&lt;FlatForward&gt;(settlementDate, riskFreeRate, dayCounter));
+Handle&lt;YieldTermStructure&gt; flatDividendTS(
+    ext::make_shared&lt;FlatForward&gt;(settlementDate, dividendYield, dayCounter));
+Handle&lt;BlackVolTermStructure&gt; flatVolTS(
+    ext::make_shared&lt;BlackConstantVol&gt;(settlementDate, calendar, volatility,
+                             dayCounter));
+auto payoff = ext::make_shared&lt;PlainVanillaPayoff&gt;(type, strike);
+auto bsmProcess = ext::make_shared&lt;BlackScholesMertonProcess&gt;(
+        underlyingH, flatDividendTS, flatTermStructure, flatVolTS);
+
+// options
+VanillaOption europeanOption(payoff, europeanExercise);
+</code></pre><ul>
+<li><code>auto europeanExercise = ext::make_shared&lt;EuropeanExercise&gt;(maturity);</code>
+<ul>
+<li><span>創建一個歐式選擇權的行使條件。</span></li>
+<li><span>使用智慧指標</span><code>（make_shared）</code><span>來創建一個歐式選擇權的行使條件對象。歐式選擇權只能在到期日行使。</span></li>
+<li><code>EuropeanExercise</code><span>在路徑</span><code>\Myproj\external\QuantLib-1.32\ql\exercise.hpp</code><span>，內容為：</span></li>
+</ul>
+</li>
+</ul><pre><code>class EuropeanExercise : public Exercise {
+    public:
+    EuropeanExercise(const Date&amp; date);
+};
+</code></pre><ul>
+<li>
+<ul>
+<li><code>EuropeanExercise(const Date&amp; date)</code><span>為呼叫實作，實作</span><code>EuropeanExercise</code><span>在路徑</span><code>\Myproj\external\QuantLib-1.32\ql\exercise.cpp</code><span>，內容為：</span></li>
+</ul>
+</li>
+</ul><pre><code>EuropeanExercise::EuropeanExercise(const Date&amp; date)
+: Exercise(European) {
+    dates_ = std::vector&lt;Date&gt;(1,date);
+}
+</code></pre><ul>
+<li>
+<ul>
+<li><span>由於式歐式選擇權，所以執行日期只會在到期日，因此在</span><code>main.cpp</code><span>中的參數為</span><code>maturity</code><span>。此處只是確定到期日而已。</span></li>
+</ul>
+</li>
+<li>
+<p><code>Handle&lt;Quote&gt; underlyingH(ext::make_shared&lt;SimpleQuote&gt;(underlying));</code></p>
+<ul>
+<li><span>創建一個包含標的資產價格的引用。在定價模型中，需要引用標的資產的當前市場價格。</span></li>
+<li><code>Handle&lt;Quote&gt;</code><span> 是一種智慧指標，用於安全地引用價格數據。</span><code>SimpleQuote</code><span> 是一個存儲單一價格的簡單容器。</span></li>
+<li><span>這些函式庫作用都是QuantLib庫的一部分，用於處理金融數據和定價模型。</span></li>
+<li><span>優點：提供了一種靈活且安全的方式來引用和更新價格數據。</span></li>
+<li><span>缺點：相比直接使用原始數據，使用這些抽象可能稍微增加了複雜性。`</span></li>
+<li><span>使用裸指標(raw pointer)需要手動管理記憶體的生存期。意指需要開發者負責適時地釋放該記憶體，否則可能導致記憶體洩漏或者存取無效記憶體的問題。為了解決裸指標可能帶來的各種使用問題，C++ 引入智慧指標(smart pointer)，對裸指標進行包裝，使得智慧指標能夠『自動釋放所指向的物件。</span></li>
+</ul>
+</li>
+<li>
+<p><code>Handle&lt;YieldTermStructure&gt; flatTermStructure(   ext::make_shared&lt;FlatForward&gt;(settlementDate, riskFreeRate, dayCounter));</code></p>
+<ul>
+<li><span>創建一個表示無風險利率結構的對象。</span></li>
+<li><code>YieldTermStructure</code><span> 是 QuantLib 中用於表示利率結構的類，它提供了未來不同時間點的利率。</span><code>FlatForward</code><span> 是一種特定的 </span><code>YieldTermStructure</code><span>，它表示一個恆定的、隨時間不變的利率。在這裡，它被用來表示一個恆定的無風險利率。</span></li>
+<li><code>Handle</code><span> 是一種智慧指標，用於管理 </span><code>YieldTermStructure</code><span> 對象的生命週期，並提供對這個對象的安全訪問。</span></li>
+</ul>
+</li>
+<li>
+<p><code>Handle&lt;YieldTermStructure&gt; flatDividendTS(   ext::make_shared&lt;FlatForward&gt;(settlementDate, dividendYield, dayCounter));</code></p>
+<ul>
+<li><span>創建一個表示股利率結構的對象。</span></li>
+<li><span>使用 </span><code>FlatForward</code><span> 來表示一個恆定的股利率。這對於計算那些支付股利的標的資產（如股票）的選擇權價格非常重要。</span></li>
+</ul>
+</li>
+<li>
+<p><code>Handle&lt;BlackVolTermStructure&gt; flatVolTS(   ext::make_shared&lt;BlackConstantVol&gt;(settlementDate, calendar, volatility, dayCounter));</code></p>
+<ul>
+<li><span>創建一個表示波動率結構的對象。</span></li>
+<li><code>BlackVolTermStructure</code><span> 是用於表示波動率結構的類，它提供了未來不同時間點的波動率。</span><code>BlackConstantVol</code><span> 是一種特定的 </span><code>BlackVolTermStructure</code><span>，用於表示一個恆定的波動率。在這裡，它被用來表示標的資產價格的恆定波動率。這對於使用 Black-Scholes-Merton 模型等定價模型來計算選擇權價格非常重要。</span></li>
+</ul>
+</li>
+<li>
+<p><code>auto payoff = ext::make_shared&lt;PlainVanillaPayoff&gt;(type, strike);</code></p>
+<ul>
+<li><span>創建一個表示選擇權損益方式的對象。</span></li>
+<li><span>在定價模型中，需要定義選擇權的支付方式，這裡使用的是普通香草選擇權（Plain Vanilla Option）的支付方式，即在到期時根據選擇權的類型（call或put）和履約價進行結算。</span></li>
+<li><span>使用 </span><code>auto</code><span> 和 </span><code>ext::make_shared</code><span> 可以簡化代碼並自動推斷出 payoff 的正確類型。</span><code>PlainVanillaPayoff</code><span> 是QuantLib中用於表示普通香草選擇權支付方式的類。</span></li>
+<li><span>實作路徑</span><code>\Myproj\external\QuantLib-1.32\ql\instruments\payoffs.cpp</code><span>內容為：</span></li>
+</ul>
+</li>
+</ul><pre><code>Real PlainVanillaPayoff::operator()(Real price) const {
+    switch (type_) {
+      case Option::Call:
+        return std::max&lt;Real&gt;(price-strike_,0.0);
+      case Option::Put:
+        return std::max&lt;Real&gt;(strike_-price,0.0);
+      default:
+        QL_FAIL("unknown/illegal option type");
+    }
+}
+</code></pre><ul>
+<li>
+<ul>
+<li><span>此處的payoff就歐式選擇權定義一樣，Call的payoff為</span><span class="mathjax raw"><mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="4" style="font-size: 113.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45A TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D44E TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D465 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n"><mjx-c class="mjx-c28"></mjx-c></mjx-mo><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D446 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c2212"></mjx-c></mjx-mo><mjx-mi class="mjx-i" space="3"><mjx-c class="mjx-c1D43E TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n"><mjx-c class="mjx-c2C"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="2"><mjx-c class="mjx-c30"></mjx-c></mjx-mn><mjx-mo class="mjx-n"><mjx-c class="mjx-c29"></mjx-c></mjx-mo></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>m</mi><mi>a</mi><mi>x</mi><mo stretchy="false">(</mo><mi>S</mi><mo>−</mo><mi>K</mi><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></math></mjx-assistive-mml></mjx-container></span><span>，Put的payoff為</span><span class="mathjax raw"><mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="5" style="font-size: 113.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45A TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D44E TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D465 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n"><mjx-c class="mjx-c28"></mjx-c></mjx-mo><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D43E TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c2212"></mjx-c></mjx-mo><mjx-mi class="mjx-i" space="3"><mjx-c class="mjx-c1D446 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n"><mjx-c class="mjx-c2C"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="2"><mjx-c class="mjx-c30"></mjx-c></mjx-mn><mjx-mo class="mjx-n"><mjx-c class="mjx-c29"></mjx-c></mjx-mo></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>m</mi><mi>a</mi><mi>x</mi><mo stretchy="false">(</mo><mi>K</mi><mo>−</mo><mi>S</mi><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></math></mjx-assistive-mml></mjx-container></span><span>。只是當中</span><code>price</code><span>為現貨價</span><span class="mathjax raw"><mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="6" style="font-size: 113.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D446 TEX-I"></mjx-c></mjx-mi></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>S</mi></math></mjx-assistive-mml></mjx-container></span><span>，</span><code>strike</code><span>為履約價</span><span class="mathjax raw"><mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="7" style="font-size: 113.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D43E TEX-I"></mjx-c></mjx-mi></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>K</mi></math></mjx-assistive-mml></mjx-container></span><span>。當然在</span><code>type</code><span>會根據先前的定義再決定這邊是要用哪個</span><code>case</code><span>的計算選擇權payoff。</span></li>
+</ul>
+</li>
+<li>
+<p><code>auto bsmProcess = ext::make_shared&lt;BlackScholesMertonProcess&gt;(   underlyingH, flatDividendTS, flatTermStructure, flatVolTS);</code></p>
+<ul>
+<li><span>創建一個用於定價的Black-Scholes-Merton過程對象。</span></li>
+<li><span>Black-Scholes-Merton過程是一種廣泛使用的選擇權定價模型，它考慮了標的資產的價格、無風險利率、股利率和波動率。</span></li>
+<li><span>使用 </span><code>auto</code><span> 和 </span><code>ext::make_shared</code><span> 提供了一種簡潔且安全的方式來創建和管理這個過程的實例。</span></li>
+<li><span>實作</span><code>\Myproj\external\QuantLib-1.32\ql\processes\blackscholesprocess.cpp</code><span>，內容為</span></li>
+</ul>
+</li>
+</ul><pre><code>BlackScholesMertonProcess::BlackScholesMertonProcess(
+                          const Handle&lt;Quote&gt;&amp; x0,
+                          const Handle&lt;YieldTermStructure&gt;&amp; dividendTS,
+                          const Handle&lt;YieldTermStructure&gt;&amp; riskFreeTS,
+                          const Handle&lt;BlackVolTermStructure&gt;&amp; blackVolTS,
+                          const ext::shared_ptr&lt;discretization&gt;&amp; d,
+                          bool forceDiscretization)
+</code></pre><ul>
+<li>
+<ul>
+<li><span>由</span><code>main.cpp</code><span>中可以發現只有用到前4個變數，目的為給予BS model初始化變數。分別為標的資產的價格、無風險利率、股利率和波動率。</span></li>
+</ul>
+</li>
+<li>
+<p><code>VanillaOption europeanOption(payoff, europeanExercise);</code></p>
+<ul>
+<li><span>創建一個歐式選擇權的實例。</span></li>
+<li><span>將之前定義的損益方式和選擇權行使方式結合起來，創建一個具體的選擇權實例。</span></li>
+<li><code>VanillaOption</code><span> 是QuantLib中用於表示普通香草選擇權的類。</span></li>
+<li><span>實作</span><code>\Myproj\external\QuantLib-1.32\ql\instruments\vanillaoption.cpp</code><span>內容為</span></li>
+</ul>
+</li>
+</ul><pre><code>VanillaOption::VanillaOption(
+    const ext::shared_ptr&lt;StrikedTypePayoff&gt;&amp; payoff,
+    const ext::shared_ptr&lt;Exercise&gt;&amp; exercise)
+: OneAssetOption(payoff, exercise) {}
+</code></pre><ul>
+<li>
+<ul>
+<li><span>實作</span><code>\Myproj\external\QuantLib-1.32\ql\instruments\oneassetoption.cpp</code><span>內容為</span></li>
+</ul>
+</li>
+</ul><pre><code>OneAssetOption::OneAssetOption(
+    const ext::shared_ptr&lt;Payoff&gt;&amp; payoff,
+    const ext::shared_ptr&lt;Exercise&gt;&amp; exercise)
+: Option(payoff, exercise) {}
+</code></pre><ul>
+<li>
+<ul>
+<li><span>兩個函數接收 payoff 和 europeanExercise 作為參數，並將它們傳遞給 VanillaOption 的基類 OneAssetOption 的構造函數。這樣，europeanOption 對象就根據提供的選擇權損益計算方式和履約方式被正確地構造和初始化。</span></li>
+</ul>
+</li>
+</ul><h2 id="正式建立選擇權定價模型" data-id="正式建立選擇權定價模型"><a class="anchor hidden-xs" href="#正式建立選擇權定價模型" title="正式建立選擇權定價模型"><span class="octicon octicon-link"></span></a><span>正式建立選擇權定價模型</span></h2><ul>
+<li><span>使用Quantlib當中函示庫，並用Black-Scholes for European、Finite differences、Binomial Cox-Ross-Rubinstein、Monte Carlo Method等四種歐式選擇權定價方法。</span></li>
+</ul><h3 id="Black-Scholes-for-European" data-id="Black-Scholes-for-European"><a class="anchor hidden-xs" href="#Black-Scholes-for-European" title="Black-Scholes-for-European"><span class="octicon octicon-link"></span></a><span>Black-Scholes for European</span></h3><pre><code>// Black-Scholes for European
+method = "Black-Scholes";
+europeanOption.setPricingEngine(ext::make_shared&lt;AnalyticEuropeanEngine&gt;(bsmProcess));
+std::cout &lt;&lt; std::setw(widths[0]) &lt;&lt; std::left &lt;&lt; method
+          &lt;&lt; std::fixed
+          &lt;&lt; std::setw(widths[1]) &lt;&lt; std::left &lt;&lt; europeanOption.NPV()
+          &lt;&lt; std::endl;
+</code></pre><ul>
+<li>
+<p><span>BS model：</span></p>
+<ul>
+<li><code>method = "Black-Scholes";</code><span>：設定一個字符串變量 method，用於表示當前使用的定價方法。</span></li>
+<li><code>europeanOption.setPricingEngine(...);</code><span>：為歐式選擇權設定定價引擎，這裡使用的是基於 Black-Scholes 模型的分析解引擎。</span></li>
+<li><code>std::cout &lt;&lt; ... &lt;&lt; europeanOption.NPV() &lt;&lt; std::endl;</code><span>：輸出定價方法和計算出的選擇權凈現值（Net Present Value, NPV）。</span></li>
+<li><span>使用 </span><code>std::string</code><span> 來存儲定價方法的名稱，因為它是一種靈活且易於使用的文本存儲方式。</span></li>
+<li><span>使用 </span><code>auto</code><span> 來自動推斷 </span><code>AnalyticEuropeanEngine</code><span> 的類型，這樣可以簡化代碼並減少錯誤。</span></li>
+<li><code>AnalyticEuropeanEngine</code><span> 是 QuantLib 庫中的一個類，提供了基於 Black-Scholes 模型的歐式選擇權定價功能。</span></li>
+<li><code>ext::make_shared</code><span> 為創建智慧指標，用於管理記憶體。</span></li>
+</ul>
+</li>
+<li>
+<p><span>實作</span><code>\Myproj\external\QuantLib-1.32\ql\instrument.cpp</code></p>
+</li>
+</ul><pre><code>void Instrument::setPricingEngine(const ext::shared_ptr&lt;PricingEngine&gt;&amp; e) {
+    if (engine_ != nullptr)
+        unregisterWith(engine_);
+    engine_ = e;
+    if (engine_ != nullptr)
+        registerWith(engine_);
+    // trigger (lazy) recalculation and notify observers
+    update();
+}
+</code></pre><ul>
+<li>
+<ul>
+<li><span>當中還會用到</span><code>\Myproj\external\QuantLib-1.32\ql\pricingengines\blackcalculator.cpp</code><span>去計算BS下的選擇權定價。</span></li>
+</ul>
+</li>
+<li>
+<ul>
+<li><span>實作</span><code>europeanOption.NPV()</code></li>
+</ul>
+</li>
+</ul><pre><code>Instrument::Instrument()
+: NPV_(Null&lt;Real&gt;()), errorEstimate_(Null&lt;Real&gt;()) {
+    // this makes sense in general (if the evaluation date
+    // changes, you probably want to recalculate) and can also
+    // help avoid some edge cases when lazy objects only forward
+    // their first notification.
+    registerWith(Settings::instance().evaluationDate());
+}
+</code></pre><h3 id="Finite-differences" data-id="Finite-differences"><a class="anchor hidden-xs" href="#Finite-differences" title="Finite-differences"><span class="octicon octicon-link"></span></a><span>Finite differences</span></h3><pre><code>// Finite differences
+Size timeSteps = 801;
+method = "Finite differences";
+auto fdengine =
+    ext::make_shared&lt;FdBlackScholesVanillaEngine&gt;(bsmProcess,
+                                                  timeSteps,
+                                                  timeSteps-1);
+europeanOption.setPricingEngine(fdengine);
+std::cout &lt;&lt; std::setw(widths[0]) &lt;&lt; std::left &lt;&lt; method
+          &lt;&lt; std::fixed
+          &lt;&lt; std::setw(widths[1]) &lt;&lt; std::left &lt;&lt; europeanOption.NPV()
+          &lt;&lt; std::endl;
+</code></pre><ul>
+<li><span>有限差分法</span>
+<ul>
+<li><code>Size timeSteps = 801;</code><span>：設定有限差分法中的時間步數。</span></li>
+<li><code>method = "Finite differences";</code><span>：指定當前使用的定價方法為有限差分法。</span></li>
+<li><code>auto fdengine = ...;</code><span>：創建一個基於有限差分法的定價引擎。</span></li>
+<li><code>europeanOption.setPricingEngine(fdengine);</code><span>：將此定價引擎應用於歐式選擇權。</span></li>
+<li><code>std::cout &lt;&lt; ... &lt;&lt; europeanOption.NPV() &lt;&lt; std::endl;</code><span>：輸出定價方法和計算出的選擇權凈現值（Net Present Value, NPV）。</span></li>
+<li><span>Size 通常是一個整數型態，用於指定數量或大小，這裡用於設定時間步數。</span></li>
+<li><span>使用 </span><code>auto</code><span> 可以自動推斷出 </span><code>FdBlackScholesVanillaEngine</code><span> 的類型，簡化代碼。</span></li>
+<li><code>FdBlackScholesVanillaEngine</code><span> 是 QuantLib 庫中的一個類，提供了基於有限差分法的選擇權定價功能。</span></li>
+<li><code>ext::make_shared</code><span> 用於創建智慧指標，這是一種現代C++中常用的記憶體管理方法。</span></li>
+</ul>
+</li>
+</ul><h3 id="Binomial-method-Cox-Ross-Rubinstein" data-id="Binomial-method-Cox-Ross-Rubinstein"><a class="anchor hidden-xs" href="#Binomial-method-Cox-Ross-Rubinstein" title="Binomial-method-Cox-Ross-Rubinstein"><span class="octicon octicon-link"></span></a><span>Binomial method: Cox-Ross-Rubinstein</span></h3><pre><code>// Binomial method: Cox-Ross-Rubinstein
+method = "Binomial Cox-Ross-Rubinstein";
+auto crrEngine = ext::make_shared&lt;BinomialVanillaEngine&lt;CoxRossRubinstein&gt;&gt;(bsmProcess, timeSteps);
+europeanOption.setPricingEngine(crrEngine);
+std::cout &lt;&lt; std::setw(widths[0]) &lt;&lt; std::left &lt;&lt; method
+          &lt;&lt; std::fixed
+          &lt;&lt; std::setw(widths[1]) &lt;&lt; std::left &lt;&lt; europeanOption.NPV()
+          &lt;&lt; std::endl;
+</code></pre><ul>
+<li><span>CRR 二項式模型</span>
+<ul>
+<li><code>method = "Binomial Cox-Ross-Rubinstein";</code><span>：設定一個字符串變量 method，用於表示當前使用的定價方法為 CRR 二項式模型。</span></li>
+<li><code>auto crrEngine = ...;</code><span>：創建一個基於 CRR 方法的二項式定價引擎。</span></li>
+<li><code>europeanOption.setPricingEngine(crrEngine);</code><span>：將此定價引擎應用於歐式選擇權。</span></li>
+<li><code>std::cout &lt;&lt; ... &lt;&lt; europeanOption.NPV() &lt;&lt; std::endl;</code><span>：輸出定價方法和計算出的選擇權凈現值（Net Present Value, NPV）。</span></li>
+<li><span>使用 </span><code>auto</code><span> 可以自動推斷出 </span><code>BinomialVanillaEngine&lt;CoxRossRubinstein&gt;</code><span> 的類型，簡化代碼。</span></li>
+<li><code>BinomialVanillaEngine&lt;CoxRossRubinstein&gt;</code><span> 是 QuantLib 中用於實現 CRR 方法的類。</span></li>
+<li><code>BinomialVanillaEngine</code><span> 是 QuantLib 庫中的一個類，提供了基於二項式模型的選擇權定價功能。</span></li>
+<li><code>ext::make_shared</code><span> 用於創建智慧指標，這是一種現代C++中常用的記憶體管理方法。</span></li>
+</ul>
+</li>
+</ul><h3 id="Monte-Carlo-Method-MC-crude" data-id="Monte-Carlo-Method-MC-crude"><a class="anchor hidden-xs" href="#Monte-Carlo-Method-MC-crude" title="Monte-Carlo-Method-MC-crude"><span class="octicon octicon-link"></span></a><span>Monte Carlo Method: MC (crude)</span></h3><pre><code>// Monte Carlo Method: MC (crude)
+timeSteps = 1;
+method = "MC (crude)";
+Size mcSeed = 42;
+auto mcengine1 = MakeMCEuropeanEngine&lt;PseudoRandom&gt;(bsmProcess)
+    .withSteps(timeSteps)
+    .withAbsoluteTolerance(0.02)
+    .withSeed(mcSeed);
+europeanOption.setPricingEngine(mcengine1);
+// Real errorEstimate = europeanOption.errorEstimate();
+std::cout &lt;&lt; std::setw(widths[0]) &lt;&lt; std::left &lt;&lt; method
+          &lt;&lt; std::fixed
+          &lt;&lt; std::setw(widths[1]) &lt;&lt; std::left &lt;&lt; europeanOption.NPV()
+          &lt;&lt; std::endl;
+</code></pre><ul>
+<li><span>蒙地卡羅</span>
+<ul>
+<li><code>timeSteps = 1;</code><span>：設定蒙特卡羅模擬中的時間步數。</span></li>
+<li><code>method = "MC (crude)";</code><span>：指定當前使用的定價方法為粗略的蒙特卡羅模擬。</span></li>
+<li><code>auto mcengine1 = ...;</code><span>：創建一個基於蒙特卡羅方法的定價引擎。</span></li>
+<li><code>europeanOption.setPricingEngine(mcengine1);</code><span>：將此定價引擎應用於歐式選擇權。</span></li>
+<li><code>std::cout &lt;&lt; ... &lt;&lt; europeanOption.NPV() &lt;&lt; std::endl;</code><span>：輸出定價方法和計算出的選擇權凈現值（Net Present Value, NPV）。</span></li>
+<li><code>Size</code><span> 用於表示數量，這裡用於設定隨機數種子。</span></li>
+<li><span>使用 </span><code>auto</code><span> 可以自動推斷出 </span><code>MakeMCEuropeanEngine</code><span> 的類型，簡化代碼。</span></li>
+<li><code>MakeMCEuropeanEngine</code><span> 是 QuantLib 庫中的一個函數，用於創建基於蒙特卡羅方法的選擇權定價引擎。</span></li>
+<li><code>PseudoRandom</code><span> 是一種偽隨機數生成器，用於蒙特卡羅模擬。</span></li>
+</ul>
+</li>
+</ul><h2 id="結語" data-id="結語"><a class="anchor hidden-xs" href="#結語" title="結語"><span class="octicon octicon-link"></span></a><span>結語</span></h2><p><span>本次是我第一次在</span><code>C++</code><span>運行</span><code>Quantlib</code><span>，過往都是較常</span><code>python</code><span>進行相關的運算。我也知道</span><code>C</code><span> based在運算精度上擁有很大的優勢，對於金融在使用利率或是相關的浮點數都是很重要的一環，但在前置作業的確是困擾我很久，總是要找哪裡出現問題導致無法run或是安裝失敗，也有出現在上週可以run，但今天就發現錯誤訊息導致無法運行。</span></p><p><span>我最初都是使用</span><code>windows 11 VS code</code><span>運行，也都很順利可以在課堂中進行老師題中的演示，但隨著期末報告要使用Quantlib時就出現許多不可控問題。最後還是使用windows 11上的</span><code>Linux Ubuntu</code><span>成功運行了，只能說環境越單純對於</span><code>C++</code><span>來說能夠更加順利運行，否則在</span><code>windows</code><span>上面運行都是需要再調整環境參數，且調整完後也會發現仍有失敗出現。雖然</span><code>Linux</code><span>在我的電腦中可以順利運行，但並非對於所有人來說是可以順利執行的，例如有個下午我跟黃群翔同學就是在嘗試如何用老師提供的</span><code>Linux Ubuntu</code><span>方法安裝，總是出現錯誤訊息，一開始以為是Ninja也要安裝或是有步驟是沒有確實執行到，我們在經過刪除及重新安裝反反覆覆試不下10次，但最後就是看到錯誤訊息中有段是</span><code>C++: fatal error: Killed signal terminated program cc1plus</code><span>，原來是虛擬機(</span><code>Ubuntu</code><span>)內容不足，最後我們是參照 </span><a href="https://blog.csdn.net/weixin_44796670/article/details/121234446" target="_blank" rel="noopener"><span>https://blog.csdn.net/weixin_44796670/article/details/121234446</span></a><span> ，創建</span><code>swap</code><span>分區得以解決。總而言之，為了可以順利運行</span><code>C++</code><span>和</span><code>Quantlib</code><span>，費勁了很大的功夫，不像</span><code>python</code><span>可以使用</span><code>google colab</code><span>或是</span><code>anaconda</code><span>就順順的解決。</span></p><p><span>最後我在本堂課程中學到最多的還是</span><code>C++</code><span>的嚴謹精神，無論是要設用</span><code>Real</code><span>還是</span><code>double</code><span>來設定精度，還是用一般的指標還是要</span><code>const</code><span>指標都是在撰寫時需要參考的。往後其實很多東西也都是像</span><code>Quantlib</code><span>一樣是經顧模組化的程式，藉由模組化能夠更加彈性以及快速的變更，倘若寫死在程式中則會出現更換一個版本，全部程式都需要動，可謂牽一髮而動全身，對於使用者或是廠商都是非常高成本的事情。因此往後我在開發時，就會想辦法將程式模組化，而並非是一個程式只能用在一個地方。</span></p></div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                <div class="toc"><ul class="nav">
+<li><a href="#金融計算程式運用（二）期末報告" title="金融計算程式運用（二）期末報告">金融計算程式運用（二）期末報告</a><ul class="nav">
+<li><a href="#摘要" title="摘要">摘要</a></li>
+<li><a href="#資料" title="資料">資料</a></li>
+<li><a href="#Start-C-and-Quantlib" title="Start C++ and Quantlib">Start C++ and Quantlib</a></li>
+<li><a href="#引入庫和命名空間：" title="引入庫和命名空間：">引入庫和命名空間：</a></li>
+<li><a href="#主函數（main）的設置" title="主函數（main）的設置">主函數（main）的設置</a></li>
+<li><a href="#參數設定" title="參數設定">參數設定</a><ul class="nav">
+<li><a href="#日期參數設定" title="日期參數設定">日期參數設定</a></li>
+<li><a href="#選擇權參數設定" title="選擇權參數設定">選擇權參數設定</a></li>
+<li><a href="#參數設定的結果印出" title="參數設定的結果印出">參數設定的結果印出</a></li>
+</ul>
+</li>
+<li><a href="#建立選擇權定價模型的前期設定" title="建立選擇權定價模型的前期設定">建立選擇權定價模型的前期設定</a><ul class="nav">
+<li><a href="#設定輸出格式" title="設定輸出格式">設定輸出格式</a></li>
+<li><a href="#創建歐式選擇權定價模型" title="創建歐式選擇權定價模型">創建歐式選擇權定價模型</a></li>
+</ul>
+</li>
+<li><a href="#正式建立選擇權定價模型" title="正式建立選擇權定價模型">正式建立選擇權定價模型</a><ul class="nav">
+<li><a href="#Black-Scholes-for-European" title="Black-Scholes for European">Black-Scholes for European</a></li>
+<li><a href="#Finite-differences" title="Finite differences">Finite differences</a></li>
+<li><a href="#Binomial-method-Cox-Ross-Rubinstein" title="Binomial method: Cox-Ross-Rubinstein">Binomial method: Cox-Ross-Rubinstein</a></li>
+<li><a href="#Monte-Carlo-Method-MC-crude" title="Monte Carlo Method: MC (crude)">Monte Carlo Method: MC (crude)</a></li>
+</ul>
+</li>
+<li><a href="#結語" title="結語">結語</a></li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">全部展開</a><a class="back-to-top" href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
+        <div class="toc"><ul class="nav">
+<li><a href="#金融計算程式運用（二）期末報告" title="金融計算程式運用（二）期末報告">金融計算程式運用（二）期末報告</a><ul class="nav">
+<li><a href="#摘要" title="摘要">摘要</a></li>
+<li><a href="#資料" title="資料">資料</a></li>
+<li><a href="#Start-C-and-Quantlib" title="Start C++ and Quantlib">Start C++ and Quantlib</a></li>
+<li><a href="#引入庫和命名空間：" title="引入庫和命名空間：">引入庫和命名空間：</a></li>
+<li><a href="#主函數（main）的設置" title="主函數（main）的設置">主函數（main）的設置</a></li>
+<li><a href="#參數設定" title="參數設定">參數設定</a><ul class="nav">
+<li><a href="#日期參數設定" title="日期參數設定">日期參數設定</a></li>
+<li><a href="#選擇權參數設定" title="選擇權參數設定">選擇權參數設定</a></li>
+<li><a href="#參數設定的結果印出" title="參數設定的結果印出">參數設定的結果印出</a></li>
+</ul>
+</li>
+<li><a href="#建立選擇權定價模型的前期設定" title="建立選擇權定價模型的前期設定">建立選擇權定價模型的前期設定</a><ul class="nav">
+<li><a href="#設定輸出格式" title="設定輸出格式">設定輸出格式</a></li>
+<li><a href="#創建歐式選擇權定價模型" title="創建歐式選擇權定價模型">創建歐式選擇權定價模型</a></li>
+</ul>
+</li>
+<li><a href="#正式建立選擇權定價模型" title="正式建立選擇權定價模型">正式建立選擇權定價模型</a><ul class="nav">
+<li><a href="#Black-Scholes-for-European" title="Black-Scholes for European">Black-Scholes for European</a></li>
+<li><a href="#Finite-differences" title="Finite differences">Finite differences</a></li>
+<li><a href="#Binomial-method-Cox-Ross-Rubinstein" title="Binomial method: Cox-Ross-Rubinstein">Binomial method: Cox-Ross-Rubinstein</a></li>
+<li><a href="#Monte-Carlo-Method-MC-crude" title="Monte Carlo Method: MC (crude)">Monte Carlo Method: MC (crude)</a></li>
+</ul>
+</li>
+<li><a href="#結語" title="結語">結語</a></li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">全部展開</a><a class="back-to-top" href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
+    <script>
+        var markdown = $(".markdown-body");
+        //smooth all hash trigger scrolling
+        function smoothHashScroll() {
+            var hashElements = $("a[href^='#']").toArray();
+            for (var i = 0; i < hashElements.length; i++) {
+                var element = hashElements[i];
+                var $element = $(element);
+                var hash = element.hash;
+                if (hash) {
+                    $element.on('click', function (e) {
+                        // store hash
+                        var hash = this.hash;
+                        if ($(hash).length <= 0) return;
+                        // prevent default anchor click behavior
+                        e.preventDefault();
+                        // animate
+                        $('body, html').stop(true, true).animate({
+                            scrollTop: $(hash).offset().top
+                        }, 100, "linear", function () {
+                            // when done, add hash to url
+                            // (default click behaviour)
+                            window.location.hash = hash;
+                        });
+                    });
+                }
+            }
+        }
+
+        smoothHashScroll();
+        var toc = $('.ui-toc');
+        var tocAffix = $('.ui-affix-toc');
+        var tocDropdown = $('.ui-toc-dropdown');
+        //toc
+        tocDropdown.click(function (e) {
+            e.stopPropagation();
+        });
+
+        var enoughForAffixToc = true;
+
+        function generateScrollspy() {
+            $(document.body).scrollspy({
+                target: ''
+            });
+            $(document.body).scrollspy('refresh');
+            if (enoughForAffixToc) {
+                toc.hide();
+                tocAffix.show();
+            } else {
+                tocAffix.hide();
+                toc.show();
+            }
+            $(document.body).scroll();
+        }
+
+        function windowResize() {
+            //toc right
+            var paddingRight = parseFloat(markdown.css('padding-right'));
+            var right = ($(window).width() - (markdown.offset().left + markdown.outerWidth() - paddingRight));
+            toc.css('right', right + 'px');
+            //affix toc left
+            var newbool;
+            var rightMargin = (markdown.parent().outerWidth() - markdown.outerWidth()) / 2;
+            //for ipad or wider device
+            if (rightMargin >= 133) {
+                newbool = true;
+                var affixLeftMargin = (tocAffix.outerWidth() - tocAffix.width()) / 2;
+                var left = markdown.offset().left + markdown.outerWidth() - affixLeftMargin;
+                tocAffix.css('left', left + 'px');
+            } else {
+                newbool = false;
+            }
+            if (newbool != enoughForAffixToc) {
+                enoughForAffixToc = newbool;
+                generateScrollspy();
+            }
+        }
+        $(window).resize(function () {
+            windowResize();
+        });
+        $(document).ready(function () {
+            windowResize();
+            generateScrollspy();
+        });
+
+        //remove hash
+        function removeHash() {
+            window.location.hash = '';
+        }
+
+        var backtotop = $('.back-to-top');
+        var gotobottom = $('.go-to-bottom');
+
+        backtotop.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToTop)
+                scrollToTop();
+            removeHash();
+        });
+        gotobottom.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToBottom)
+                scrollToBottom();
+            removeHash();
+        });
+
+        var toggle = $('.expand-toggle');
+        var tocExpand = false;
+
+        checkExpandToggle();
+        toggle.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tocExpand = !tocExpand;
+            checkExpandToggle();
+        })
+
+        function checkExpandToggle () {
+            var toc = $('.ui-toc-dropdown .toc');
+            var toggle = $('.expand-toggle');
+            if (!tocExpand) {
+                toc.removeClass('expand');
+                toggle.text('Expand all');
+            } else {
+                toc.addClass('expand');
+                toggle.text('Collapse all');
+            }
+        }
+
+        function scrollToTop() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: 0
+            }, 100, "linear");
+        }
+
+        function scrollToBottom() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: $(document.body)[0].scrollHeight
+            }, 100, "linear");
+        }
+    </script>
+</body>
+
+</html>
